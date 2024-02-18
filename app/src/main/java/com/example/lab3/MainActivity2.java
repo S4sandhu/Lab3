@@ -34,6 +34,7 @@ public class MainActivity2 extends AppCompatActivity {
     private ActivityResultLauncher<Intent> cameraResult;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
@@ -58,9 +59,7 @@ public class MainActivity2 extends AppCompatActivity {
         txtWelcome.setText("Welcome Back: "+emailAdress );
 
         Button btnPhone=(Button)findViewById(R.id.btnPhone);
-        Button btnSms=(Button)findViewById(R.id.btnSms);
         Button btnPic=(Button)findViewById(R.id.btnPic);
-        Button btnMap=(Button)findViewById(R.id.btnMap);
         EditText editText=(EditText) findViewById(R.id.edtPhone);
 
         btnPhone.setOnClickListener(view -> {
@@ -74,34 +73,8 @@ public class MainActivity2 extends AppCompatActivity {
             startActivity( call);
 
         });
-        btnSms.setOnClickListener(view -> {
-            // Replace phoneNumber with the recipient's phone number
-            String phoneNumber = editText.getText().toString();
-            // Create the intent
-            Intent sms = new Intent(Intent.ACTION_SENDTO);
-            // Set the data URI with the recipient's phone number
-            sms.setData(Uri.parse("smsto:" + phoneNumber));
-            // Start the activity
-            startActivity(sms);
-        });
-
-        btnMap.setOnClickListener(view -> {
-            // Replace latitude and longitude with the coordinates of the location you want to open
-            double latitude = 37.7749;
-            double longitude = -122.4194;
-
-            // Create the intent
-            Uri gmmIntentUri = Uri.parse("geo:" + latitude + "," + longitude);
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-
-            // Optionally, specify a zoom level
-            mapIntent.putExtra("zoom", 15);
-
-            // Start the activity
-            startActivity(mapIntent);
 
 
-        });
 
         btnPic.setOnClickListener(view -> {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
